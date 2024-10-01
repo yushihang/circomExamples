@@ -7,17 +7,13 @@ pragma circom 2.0.0;
 template Multiplier2 () {  
 
    // Declaration of signals.  
-   signal temp;
+   signal input x;  
    signal input y;  
    signal output z;
-   signal input a;  
-   signal input x; 
-
 
 
    // Constraints.  
-   temp <== a * (y + 1);
-   z <== (x+y) * temp;  
+   z <== x * y;  
 }
 
- component main {public [x, a]} = Multiplier2();
+ component main {public [x]} = Multiplier2();

@@ -16,8 +16,8 @@ template Multiplier2 () {
 
 
    // Constraints.  
-   temp <== a * (y + 1);
-   z <== (x+y) * temp;  
+   temp <== (a + x) * (x + y + 3);
+   z <== (x + y + a) * (temp + x + 1);  
 }
 
  component main {public [x, a]} = Multiplier2();

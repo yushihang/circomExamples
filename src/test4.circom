@@ -8,16 +8,20 @@ template Multiplier2 () {
 
    // Declaration of signals.  
    signal temp;
+   signal temp1;
    signal input y;  
    signal output z;
    signal input a;  
    signal input x; 
 
+   var xx = 2;
+
 
 
    // Constraints.  
-   temp <== a * (y + 1);
-   z <== (x+y) * temp;  
+   temp <== (a + x + 4) * (x + y + 3);
+   temp1 <== temp * xx;
+   z <== (x + y + a) * (temp1 + x + 1);  
 }
 
  component main {public [x, a]} = Multiplier2();
