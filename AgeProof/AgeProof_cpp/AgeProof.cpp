@@ -39,11 +39,13 @@ uint get_number_of_components() {return 6;}
 
 uint get_size_of_input_hashmap() {return 256;}
 
-uint get_size_of_witness() {return 99;}
+uint get_size_of_witness() {return 102;}
 
 uint get_size_of_constants() {return 7;}
 
 uint get_size_of_io_map() {return 0;}
+
+uint get_size_of_bus_field_map() {return 0;}
 
 void release_memory_component(Circom_CalcWit* ctx, uint pos) {{
 
@@ -96,7 +98,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[6];
+FrElement expaux[4];
 FrElement lvar[8];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -173,8 +175,8 @@ while(Fr_isTrue(&expaux[0])){
 {
 PFrElement aux_dest = &lvar[3];
 // load src
-Fr_mul(&expaux[2],&signalValues[mySignalStart + (((32 * Fr_toInt(&lvar[6])) + (1 * Fr_toInt(&lvar[5]))) + 33)],&lvar[7]); // line circom 31
-Fr_add(&expaux[0],&lvar[3],&expaux[2]); // line circom 31
+Fr_mul(&expaux[1],&signalValues[mySignalStart + (((32 * Fr_toInt(&lvar[6])) + (1 * Fr_toInt(&lvar[5]))) + 33)],&lvar[7]); // line circom 31
+Fr_add(&expaux[0],&lvar[3],&expaux[1]); // line circom 31
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
@@ -225,16 +227,16 @@ Fr_band(&expaux[0],&expaux[1],&circuitConstants[4]); // line circom 38
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
-Fr_sub(&expaux[3],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&circuitConstants[4]); // line circom 41
-Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&expaux[3]); // line circom 41
+Fr_sub(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&circuitConstants[4]); // line circom 41
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&expaux[2]); // line circom 41
 Fr_eq(&expaux[0],&expaux[1],&circuitConstants[3]); // line circom 41
 if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 41. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
 assert(Fr_isTrue(&expaux[0]));
 {
 PFrElement aux_dest = &lvar[4];
 // load src
-Fr_mul(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&lvar[7]); // line circom 43
-Fr_add(&expaux[0],&lvar[4],&expaux[2]); // line circom 43
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[5])) + 0)],&lvar[7]); // line circom 43
+Fr_add(&expaux[0],&lvar[4],&expaux[1]); // line circom 43
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
@@ -284,7 +286,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[6];
+FrElement expaux[4];
 FrElement lvar[4];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -322,16 +324,16 @@ Fr_band(&expaux[0],&expaux[1],&circuitConstants[4]); // line circom 96
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
-Fr_sub(&expaux[3],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&circuitConstants[4]); // line circom 97
-Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[3]); // line circom 97
+Fr_sub(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&circuitConstants[4]); // line circom 97
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[2]); // line circom 97
 Fr_eq(&expaux[0],&expaux[1],&circuitConstants[3]); // line circom 97
 if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 97. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
 assert(Fr_isTrue(&expaux[0]));
 {
 PFrElement aux_dest = &lvar[1];
 // load src
-Fr_mul(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&lvar[2]); // line circom 98
-Fr_add(&expaux[0],&lvar[1],&expaux[2]); // line circom 98
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&lvar[2]); // line circom 98
+Fr_add(&expaux[0],&lvar[1],&expaux[1]); // line circom 98
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
@@ -381,7 +383,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[4];
+FrElement expaux[3];
 FrElement lvar[0];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -442,7 +444,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[7];
+FrElement expaux[4];
 FrElement lvar[4];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -502,17 +504,17 @@ Fr_band(&expaux[0],&expaux[1],&circuitConstants[4]); // line circom 77
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
-Fr_sub(&expaux[3],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&circuitConstants[4]); // line circom 78
-Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[3]); // line circom 78
+Fr_sub(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&circuitConstants[4]); // line circom 78
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[2]); // line circom 78
 Fr_eq(&expaux[0],&expaux[1],&circuitConstants[3]); // line circom 78
 if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 78. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
 assert(Fr_isTrue(&expaux[0]));
 {
 PFrElement aux_dest = &lvar[1];
 // load src
-Fr_pow(&expaux[4],&circuitConstants[1],&lvar[3]); // line circom 79
-Fr_mul(&expaux[2],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[4]); // line circom 79
-Fr_add(&expaux[0],&lvar[1],&expaux[2]); // line circom 79
+Fr_pow(&expaux[2],&circuitConstants[1],&lvar[3]); // line circom 79
+Fr_mul(&expaux[1],&signalValues[mySignalStart + ((1 * Fr_toInt(&lvar[3])) + 0)],&expaux[2]); // line circom 79
+Fr_add(&expaux[0],&lvar[1],&expaux[1]); // line circom 79
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
@@ -538,8 +540,8 @@ ctx->componentMemory[mySubcomponents[cmp_index_ref]].inputCounter -= 1;
 assert(!(ctx->componentMemory[mySubcomponents[cmp_index_ref]].inputCounter));
 IsZero_2_run(mySubcomponents[cmp_index_ref],ctx);
 }
-Fr_mul(&expaux[3],&ctx->signalValues[ctx->componentMemory[mySubcomponents[0]].signalStart + 0],&circuitConstants[5]); // line circom 86
-Fr_add(&expaux[1],&lvar[1],&expaux[3]); // line circom 86
+Fr_mul(&expaux[2],&ctx->signalValues[ctx->componentMemory[mySubcomponents[0]].signalStart + 0],&circuitConstants[5]); // line circom 86
+Fr_add(&expaux[1],&lvar[1],&expaux[2]); // line circom 86
 Fr_sub(&expaux[2],&circuitConstants[5],&signalValues[mySignalStart + 32]); // line circom 86
 Fr_eq(&expaux[0],&expaux[1],&expaux[2]); // line circom 86
 if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 86. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
@@ -571,7 +573,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[3];
+FrElement expaux[2];
 FrElement lvar[2];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -725,7 +727,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 bool* mySubcomponentsParallel = ctx->componentMemory[ctx_index].subcomponentsParallel;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
-FrElement expaux[2];
+FrElement expaux[1];
 FrElement lvar[0];
 uint sub_component_aux;
 uint index_multiple_eq;
@@ -740,6 +742,20 @@ mySubcomponents[aux_create+i] = aux_cmp_num;
 csoffset += 169 ;
 aux_cmp_num += 5;
 }
+}
+{
+printf("age");
+}
+{
+printf(" ");
+}
+{
+char* temp = Fr_element2str(&signalValues[mySignalStart + 2]);
+printf("%s",temp);
+delete [] temp;
+}
+{
+printf("\n");
 }
 {
 uint cmp_index_ref = 0;

@@ -133,6 +133,8 @@ template LessThan(n) {
     signal input ageLimit;
     signal output out;
 
+    log("age", age);
+
     component lt = LessThan(32);
     lt.in[0] <== ageLimit;
     lt.in[1] <== age;
