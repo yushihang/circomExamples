@@ -10,4 +10,4 @@ template LinearAdder() {
     sum <== temp * 2;
 }
 
-component main = LinearAdder();
+component main{public[a]} = LinearAdder();
